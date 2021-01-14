@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import MoviesSearch from './MoviesSearch';
+
 
 export default function Search() {
     const [query, setQuery] = useState('');
-    const [movies, setMovies] = useState('');
+    const [movies, setMovies] = useState({});
 
     const handleSearchInputChange = e => {
         setQuery(e.target.value);
@@ -12,7 +14,10 @@ export default function Search() {
         e.preventDefault();
         fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`)
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res.Search)
+            setMovies(res.Search)
+        })
     }
 
     return (
@@ -27,6 +32,9 @@ export default function Search() {
                 />
                 <button type="submit">Submit</button>
             </form>
+            {typeof movies === 'object' && 
+                movies.length > 0 && <h2>Movies By Search:</h2>}
+            <MoviesSearch movies={movies} />
 
         </div>
     )
