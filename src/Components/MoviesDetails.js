@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Movies = ({ Title, Year, imdbID, Poster }) => {
+const MoviesDetails = ({ movie }) => {
+    const { Title, Year, imdbID, Poster } = movie
     return (
         <div key={imdbID} className="movie">
             <img className="movie-poster" src={Poster} alt="poster"/>
@@ -12,6 +13,4 @@ const Movies = ({ Title, Year, imdbID, Poster }) => {
     )
 }
 
-const MoviesSearch = ({ movies }) => <div className="movie-list">{movies.map(Movies)}</div>
-
-export default MoviesSearch;
+export default MoviesDetails;
