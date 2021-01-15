@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MoviesDetails = ({ movie }) => {
+const MoviesDetails = ({ movie, addNomination }) => {
     const { Title, Year, imdbID, Poster } = movie
     return (
         <div key={imdbID} className="movie">
@@ -9,6 +9,7 @@ const MoviesDetails = ({ movie }) => {
             <h3 className="title">{Title}</h3>
             <h3 className="year">{Year}</h3>
             <h3 className="imdb">{imdbID}</h3>
+            <button className="nominate" onClick={() => addNomination}>Nominate</button>
         </div>
     )
 }
