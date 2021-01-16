@@ -5,7 +5,8 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col } from 'react-bootstrap'
+import {Container, Row, Col } from 'react-bootstrap';
+
 
 
 export default function App() {
@@ -53,7 +54,7 @@ export default function App() {
             setNomination([...nomination, movie])
             localStorage.setItem("nomination", JSON.stringify([...nomination, movie]))       
         } else {
-            alert()
+            // alert.show('You can only nominate five movies! Delete one of them and nominate again ;)')
         }
     }
 
