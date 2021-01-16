@@ -1,23 +1,38 @@
 import React from 'react';
+// import { Card, Icon, Image } from 'semantic-ui-react'
+import { Button } from 'react-bootstrap';
 
-const MoviesDetails = ({ movie, nomination, addNomination, removeNomination }) => {
+
+const MoviesDetails = ({ movie, nomination, addNomination }) => {
     const { Title, Year, imdbID, Poster } = movie
     return (
-        <div className="movie">
-            <img className="movie-poster" src={Poster} alt="poster"/>
-            <br />
-            <h3 className="title">{Title}</h3>
-            <h3 className="year">{Year}</h3>
-            <h3 className="imdb">{imdbID}</h3>
-            {
-                !nomination.includes(movie)
-                ? 
-                <button className="nominate" onClick={() => addNomination(movie)}>Nominate</button> 
-                : 
-                <button className="nominate" onClick={() => removeNomination(movie)}>Unnominate</button>
-            }
-            
-        </div>
+
+            <div className="movie card mb-3 rounded" style={{width: '400px'}}>
+                <div className="row no-gutters">
+                    <div className="col-md-4">
+                        <img className="movie-poster" src={Poster} width={'100%'} height={200} alt="poster" />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <h5 className="card-title">Title: {Title}</h5>
+                            <p className="year imdb card-text">
+                                Year: {Year}
+                                <br />
+                                imdbID: {imdbID}
+                            </p>
+                            <>
+                                {
+                                    !nomination.includes(movie)
+                                    ? 
+                                    <Button className="nominate" variant="dark" onClick={() => addNomination(movie)} active>Nominate</Button>
+                                    : 
+                                    <Button className="already-nominated" disabled>Already Nominated</Button>
+                                }
+                            </>
+                        </div>
+                    </div>
+                </div>
+            </div>
     )
 }
 

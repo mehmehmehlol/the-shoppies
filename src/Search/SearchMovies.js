@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchContainer from './SearchContainer';
+// import SearchContainer from './SearchContainer';
 
 
 
@@ -8,7 +8,6 @@ const SearchMovies = ({ handleSubmit, handleSearchInputChange }) => {
     return (
         <div className="searchable-movie-reviews">
             <form onSubmit={handleSubmit}>
-            {/* <form> */}
                 <label htmlFor="search-input">Search Movie</label>
                 <input 
                     id="search-input"

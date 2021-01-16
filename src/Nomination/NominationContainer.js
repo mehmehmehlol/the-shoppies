@@ -1,11 +1,13 @@
 import React from 'react';
-import MoviesDetails from '../Search/MoviesDetails';
+import NominationDetails from './NominationDetails';
 
 
 
-const NominationContainer = ({ movies, nomination, removeNomination }) => {
+const NominationContainer = ({ nomination, removeNomination }) => {
     return (
-        movies.map(movie => <MoviesDetails key={movie.imdbID} movie={movie} nomination={nomination} removeNomination={removeNomination}/>)
+        <div className=" col-sm-3 col-md-6 col-lg-4">
+            { nomination.map(nominated => <NominationDetails nomination={nominated} removeNomination={removeNomination}/>) }
+        </div>
     )
 }
 export default NominationContainer;
