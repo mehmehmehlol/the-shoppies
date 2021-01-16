@@ -50,11 +50,11 @@ export default function App() {
     // Change in nomination list
     const addNomination = movie => {
         // debugger
-        if (nomination.length <= 5 && !nomination.includes(movie)) {
+        if (nomination.length < 5 && !nomination.includes(movie)) {
             setNomination([...nomination, movie])
             localStorage.setItem("nomination", JSON.stringify([...nomination, movie]))       
         } else {
-            // alert.show('You can only nominate five movies! Delete one of them and nominate again ;)')
+            alert('You can only nominate five movies! Delete one of them and nominate again ;)')
         }
     }
 
@@ -76,22 +76,18 @@ export default function App() {
                             handleSubmit={handleSubmit}
                         />
                         <br />
-                    
-                
-                    
                         <h2>Movies By Search:</h2>
                         <SearchContainer 
                             movies={movies} 
                             addNomination={addNomination} 
                             nomination={nomination} 
+                            error={error}
                         />
                     </Col>
-                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>
-                    
+                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>      
                         <NominationContainer 
                             removeNomination={removeNomination}
                             nomination={nomination}
-                            // movies={movies}
                         />
                     </Col>
                 </Row>
