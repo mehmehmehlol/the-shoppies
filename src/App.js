@@ -61,13 +61,14 @@ export default function App() {
             addNomination={addNomination}
             movies={movies}
             nomination={nomination}
+            removeNomination={removeNomination}
           />
           {/* <SearchContainer /> */}
-          <NominationContainer 
+          {/* <NominationContainer 
             removeNomination={removeNomination}
             nomination={nomination}
             movies={movies}
-          />
+          /> */}
 
         </div>
     )
