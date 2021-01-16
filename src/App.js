@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import SearchMovies from './Search/SearchMovies';
-// import SearchContainer from './Search/SearchContainer';
+import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 
@@ -46,7 +46,7 @@ export default function App() {
     }
 
     const removeNomination = movie => {
-        debugger
+        // debugger
         const newNomination = [...nomination].filter(nominated => nominated !== movie)
         setNomination(newNomination)
         localStorage.setItem("nomination", JSON.stringify(newNomination))
@@ -63,12 +63,20 @@ export default function App() {
             nomination={nomination}
             removeNomination={removeNomination}
           />
-          {/* <SearchContainer /> */}
-          {/* <NominationContainer 
+
+          <h2>Movies By Search:</h2>
+          <SearchContainer 
+            movies={movies} 
+            addNomination={addNomination} 
+            removeNomination={removeNomination} 
+            nomination={nomination} 
+          />
+
+          <NominationContainer 
             removeNomination={removeNomination}
             nomination={nomination}
             movies={movies}
-          /> */}
+          />
 
         </div>
     )

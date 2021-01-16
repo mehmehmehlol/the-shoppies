@@ -3,7 +3,7 @@ import SearchContainer from './SearchContainer';
 
 
 
-const SearchMovies = ({ handleSubmit, handleSearchInputChange, movies, nomination, addNomination, removeNomination }) => {
+const SearchMovies = ({ handleSubmit, handleSearchInputChange }) => {
 
     return (
         <div className="searchable-movie-reviews">
@@ -18,10 +18,7 @@ const SearchMovies = ({ handleSubmit, handleSearchInputChange, movies, nominatio
                 />
                 <button type="submit">Submit</button>
             </form>
-         <h2>Movies By Search:</h2>
-            <SearchContainer movies={movies} addNomination={addNomination} removeNomination={removeNomination} nomination={nomination} />
-       
-
+         
         </div>
     )
 }
