@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchContainer from './SearchContainer';
 
 
 
-const SearchMovies = ({ handleSubmit, handleSearchInputChange, movies, addNomination }) => {
+const SearchMovies = ({ handleSubmit, handleSearchInputChange, movies, nomination, addNomination }) => {
 
     return (
         <div className="searchable-movie-reviews">
@@ -19,7 +19,7 @@ const SearchMovies = ({ handleSubmit, handleSearchInputChange, movies, addNomina
                 <button type="submit">Submit</button>
             </form>
          <h2>Movies By Search:</h2>
-            <SearchContainer movies={movies} addNomination={addNomination}/>
+            <SearchContainer movies={movies} addNomination={addNomination} nomination={nomination} />
        
 
         </div>

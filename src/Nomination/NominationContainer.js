@@ -1,15 +1,11 @@
 import React from 'react';
+import MoviesDetails from '../Search/MoviesDetails';
 
-export default function NominationContainer() {
-    const [nominated, setNominated] = useState(null);
 
-    const displayNominationInfo = movie => {
-        setNominated[movie.find(m => m === movie)]
-    }
 
+const NominationContainer = ({ movies, nomination, removeNomination }) => {
     return (
-        <div>
-            
-        </div>
+        movies.map(movie => <MoviesDetails key={movie.imdbID} movie={movie} nomination={nomination} removeNomination={removeNomination}/>)
     )
 }
+export default NominationContainer;
