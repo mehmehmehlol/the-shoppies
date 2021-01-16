@@ -22,12 +22,13 @@ const MoviesDetails = ({ movie, nomination, addNomination }) => {
                             </p>
                             <>
                                 {
-                                    !nomination.includes(movie)
+                                    (!nomination.includes(movie))
                                     ? 
                                     <Button className="nominate" variant="dark" onClick={() => addNomination(movie)} active>Nominate</Button>
                                     : 
                                     <Button className="already-nominated" disabled>Already Nominated</Button>
                                 }
+                                
                             </>
                         </div>
                     </div>

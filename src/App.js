@@ -15,6 +15,7 @@ export default function App() {
     const [movies, setMovies] = useState([]);
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
+
     
     // empty array/list to only fire the callback once
     useEffect(() => {
