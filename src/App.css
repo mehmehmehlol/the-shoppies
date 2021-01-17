@@ -1,12 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Yusei+Magic&display=swap');
+
 .App {
   text-align: center;
   margin: auto;
+  font-family: "Yusei Magic", sans-serif;
+}
+
+#root {
+  font-family: 'Lora', serif;
+}
+
+/* Header */
+.navbar-brand {
+  font-family: "Yusei Magic", sans-serif;
+  font-size: 80px;
+  text-align: center;
 }
 
 .search-container {
   margin-top: 20px;
   width: 100%;
-  max-width: 2000px;
+  max-width: 1000px;
 }
 
 .search-label {
@@ -23,23 +37,13 @@
   outline: none;
 }
 
-.search-icon {
-  position: absolute;
-  top: 20px;
-  font-size: 24px;
-  color: #555555;
-  /* right: 18px; */
+.btn-outline-dark {
+  margin: 5px;
+  font-size: 20px; 
 }
 
-.btn {
-  margin: 10px;
-}
 
-/* Movie Details */
-.movie-poster {
-  height: auto;
-  max-width: 100%;
-}
+/* Movie Container*/
 
 .movie-container {
   margin-top: 20px;
@@ -49,4 +53,20 @@
 .nomination-container {
   margin-top: 20px;
 }
+
+/* Movie + Nomination Details */
+.movie-poster {
+  height: auto;
+  max-width: 100%;
+}
+
+h5.card-title {
+  font-weight: 700;
+}
+
+p.card-text {
+  font-weight: 500;
+}
+
+
 

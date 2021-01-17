@@ -73,17 +73,18 @@ export default function App() {
     return (
         <div>
             <Container>
-            <Header />
-                <div className="row">
+            <Header handleSearchInputChange={handleSearchInputChange}
+                    handleSubmit={handleSubmit}
+                    query={query}
+            />
+                {/* <div className="row"> */}
                     {/* <Col xs={6} sm={6} md={9} lg={9} xl={9}> */}
-                    <div className="col-md-12"> 
-                        <SearchMovies 
-                            handleSearchInputChange={handleSearchInputChange}
-                            handleSubmit={handleSubmit}
-                            query={query}
-                        />
-                    </div>
-                </div>
+                    {/* <div className="col-md-12">  */}
+                        {/* <SearchMovies 
+                            
+                        /> */}
+                    {/* </div> */}
+                {/* </div> */}
    
                 <div className="row">
                      <div className="col-sm-6 col-md-6">

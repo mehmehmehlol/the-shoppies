@@ -11,11 +11,11 @@ const NominationDetails = ({ nomination, removeNomination }) => {
                     </div>
                     <div className="col-sm-8 col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">Title: {Title}</h5>
+                            <h5 className="card-title">{Title}</h5>
                             <p className="year imdb card-text">
                                 Year: {Year}
-                                <br />
-                                imdbID: {imdbID}
+                                {/* <br />
+                                imdbID: {imdbID} */}
                             </p>
                             
                             <Button className="nominate" variant="dark" onClick={() => removeNomination(nomination)} active>Remove Nomination</Button>

@@ -13,11 +13,11 @@ const MoviesDetails = ({ movie, nomination, addNomination }) => {
                     </div>
                     <div className="col-sm-8 col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">Title: {Title}</h5>
-                            <p className="year imdb card-text">
+                            <h5 className="card-title">{Title}</h5>
+                            <p className="year card-text">
                                 Year: {Year}
-                                <br />
-                                imdbID: {imdbID}
+                                {/* <br />
+                                imdbID: {imdbID} */}
                             </p>
                             <>
                                 {
