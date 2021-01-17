@@ -6,7 +6,7 @@ import React from 'react';
 const SearchMovies = ({ query, handleSubmit, handleSearchInputChange }) => {
 
     return (
-        <div className="searchable-movie-reviews search-container">
+        <div className="searchable-movie-reviews search-container justify-content-center">
             <form onSubmit={handleSubmit}>
                 <label className="search-label" htmlFor="search-input">
                     <input 
@@ -14,12 +14,11 @@ const SearchMovies = ({ query, handleSubmit, handleSearchInputChange }) => {
                         name="query"
                         value={query}
                         type="text"
-                        style={{ width: 300 }}
+                        style={{ width: 1000 }}
                         placeholder="Search Movies..."
                         onChange={handleSearchInputChange}
                     />
-                    <i className="fas fa-search search-icon" aria-hidden="true" />
-                    {/* <button type="submit">Submit</button> */}
+                    <button type="submit" className="btn btn-secondary">Submit</button>
                 </label>
             </form>
          

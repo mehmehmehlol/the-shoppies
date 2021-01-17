@@ -6,13 +6,12 @@ import { Button } from 'react-bootstrap';
 const MoviesDetails = ({ movie, nomination, addNomination }) => {
     const { Title, Year, imdbID, Poster } = movie
     return (
-
             <div className="movie card mb-3 rounded" style={{width: '400px'}}>
                 <div className="row no-gutters">
-                    <div className="col-md-4">
-                        <img className="movie-poster" src={Poster} width={'100%'} height={200} alt="poster" />
+                    <div className="col-sm-4 col-md-4">
+                        <img className="movie-poster" src={Poster} alt="poster" />
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-sm-8 col-md-8">
                         <div className="card-body">
                             <h5 className="card-title">Title: {Title}</h5>
                             <p className="year imdb card-text">

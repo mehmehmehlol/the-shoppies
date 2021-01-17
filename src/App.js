@@ -5,10 +5,11 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import axios from 'axios';
-import {Container, Row, Col } from 'react-bootstrap';
+import {Container } from 'react-bootstrap';
+import Header from './Component/Header';
 
-
+const moviesPerPage = 3;
+let arrayForHoldingMovies = [];
 
 export default function App() {
   
@@ -17,6 +18,8 @@ export default function App() {
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
 
+    const [moviesToShow, setMoviesToShow] = useState([]);
+    const [next, setNext] = useState(3);
     
     // const cancel = '';
 
@@ -27,46 +30,14 @@ export default function App() {
             setNomination(JSON.parse(nominations))
         }
     }, [])
+
+    
     
     // Search Movies
     const handleSearchInputChange = e => {
         e.preventDefault();
         setQuery(e.target.value);
-        
     }
-
-    // const fetchSearchResults = ( query ) => {
-    //     const searchUrl = `https://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`;
-
-    //     if (cancel) {
-    //         cancel.cancel();
-    //     } 
-
-    //     cancel = axios.CancelToken.source();
-
-    //     axios.get(searchUrl, {
-    //         cancelToken: cancel.token
-    //     })
-    //     .then(res => {
-    //         const resultNotFoundMsg = !res.Search.length ? 'There are no more search results.' : '';
-    //         setMovies(res.Search)
-    //         setMessage(resultNotFoundMsg)
-    //         setLoading(false)
-    //     })
-    //     .catch( error => {
-    //         if (axios.isCancel(error) || error) {
-    //             setLoading(false)
-    //             setMessage('Failed to fetch the data. Please check network')
-    //         }
-    //     })
-    // }
-
-    // if (query.length > 0) {
-    //     const movie = movie.filter((i) => {
-    //         return i.Title.match(query);
-    //     });
-    // }
-
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -103,6 +74,24 @@ export default function App() {
         localStorage.setItem("nomination", JSON.stringify(newNomination))
     }
 
+    // load more movie (limit to show only 5)
+    const loopWithSlice = (start, end) => {
+        const slicedMovies = movies.slice(start, end);
+        arrayForHoldingMovies = [...arrayForHoldingMovies, ...slicedMovies];
+        setMoviesToShow(arrayForHoldingMovies);
+    }
+
+    useEffect(() => {
+        loopWithSlice(0, moviesPerPage);
+    }, [])
+
+
+
+    const handleShowMorePosts = () => {
+        loopWithSlice(next, next + moviesPerPage);
+        setNext(next + moviesPerPage);
+    }
+
     // handle error
     // const handleError = () => {
     //     error;
@@ -111,30 +100,38 @@ export default function App() {
     return (
         <div>
             <Container>
-                <Row>
-                    <Col xs={6} sm={6} md={9} lg={9} xl={9}>
+            <Header />
+                <div className="row">
+                    {/* <Col xs={6} sm={6} md={9} lg={9} xl={9}> */}
+                    <div className="col-md-12"> 
                         <SearchMovies 
                             handleSearchInputChange={handleSearchInputChange}
                             handleSubmit={handleSubmit}
                             query={query}
                         />
-                        <br />
-                        <h2>Movies By Search:</h2>
+                    </div>
+                </div>
+   
+                <div className="row">
+                     <div className="col-sm-6 col-md-6">
+                        {/* <h2>Movies By Search:</h2> */}
                         <SearchContainer 
                             movies={movies} 
                             addNomination={addNomination} 
                             nomination={nomination} 
                             error={error}
                             query={query}
+                            moviesToRender={moviesToShow}
                         />
-                    </Col>
-                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>      
+                    </div>
+                    {/* <Col xs={6} sm={6} md={3} lg={3} xl={3}>      */}
+                    <div className="col-sm-6 col-md-6">       
                         <NominationContainer 
                             removeNomination={removeNomination}
                             nomination={nomination}
                         />
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Container>  
         </div>
     )
