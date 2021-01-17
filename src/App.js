@@ -5,7 +5,8 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col } from 'react-bootstrap';
+import {Container } from 'react-bootstrap';
+import Header from './Component/Header';
 
 
 
@@ -15,8 +16,6 @@ export default function App() {
     const [movies, setMovies] = useState([]);
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('')
     
     // empty array/list to only fire the callback once
     useEffect(() => {
@@ -29,8 +28,6 @@ export default function App() {
     // Search Movies
     const handleSearchInputChange = e => {
         setQuery(e.target.value);
-        setLoading(true);
-        setMessage('');
     }
 
     const handleSubmit = e => {
@@ -76,29 +73,36 @@ export default function App() {
     return (
         <div>
             <Container>
-                <Row>
-                    <Col xs={6} sm={6} md={9} lg={9} xl={9}>
+            <Header />
+                <div className="row">
+                    {/* <Col xs={6} sm={6} md={9} lg={9} xl={9}> */}
+                    <div className="col-md-12"> 
                         <SearchMovies 
                             handleSearchInputChange={handleSearchInputChange}
                             handleSubmit={handleSubmit}
                             query={query}
                         />
-                        <br />
-                        <h2>Movies By Search:</h2>
+                    </div>
+                </div>
+   
+                <div className="row">
+                     <div className="col-sm-6 col-md-6">
+                        {/* <h2>Movies By Search:</h2> */}
                         <SearchContainer 
                             movies={movies} 
                             addNomination={addNomination} 
                             nomination={nomination} 
                             error={error}
                         />
-                    </Col>
-                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>      
+                    </div>
+                    {/* <Col xs={6} sm={6} md={3} lg={3} xl={3}>      */}
+                    <div className="col-sm-6 col-md-6">       
                         <NominationContainer 
                             removeNomination={removeNomination}
                             nomination={nomination}
                         />
-                    </Col>
-                </Row>
+                    </div>
+                </div>
             </Container>  
         </div>
     )
