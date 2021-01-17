@@ -5,6 +5,7 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 import {Container, Row, Col } from 'react-bootstrap';
 
 
@@ -15,6 +16,8 @@ export default function App() {
     const [movies, setMovies] = useState([]);
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('')
     
     // empty array/list to only fire the callback once
     useEffect(() => {
@@ -27,6 +30,12 @@ export default function App() {
     // Search Movies
     const handleSearchInputChange = e => {
         setQuery(e.target.value);
+        setLoading(true);
+        setMessage('');
+    }
+
+    const fetchSearchResults = ( query ) => {
+        const searchUrl = `https://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`
     }
 
 
@@ -65,6 +74,10 @@ export default function App() {
         localStorage.setItem("nomination", JSON.stringify(newNomination))
     }
 
+    // handle error
+    // const handleError = () => {
+    //     error;
+    // }
 
     return (
         <div>
@@ -74,6 +87,7 @@ export default function App() {
                         <SearchMovies 
                             handleSearchInputChange={handleSearchInputChange}
                             handleSubmit={handleSubmit}
+                            query={query}
                         />
                         <br />
                         <h2>Movies By Search:</h2>

@@ -4,7 +4,8 @@ import MoviesDetails from './MoviesDetails';
 
 const SearchContainer = ({ error, movies, nomination, addNomination }) => {
     return (
-        <div className=" col-sm-9 col-md-6 col-lg-8">
+        // <div className=" col-sm-9 col-md-6 col-lg-8">
+        <div className="search-container">
             {/* { error } */}
             { movies.map(movie => <MoviesDetails 
                                         key={movie.imdbID} 
