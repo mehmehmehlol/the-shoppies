@@ -5,7 +5,7 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
+// import axios from 'axios';
 import {Container, Row, Col } from 'react-bootstrap';
 
 
@@ -16,9 +16,10 @@ export default function App() {
     const [movies, setMovies] = useState([]);
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('')
+
     
+    // const cancel = '';
+
     // empty array/list to only fire the callback once
     useEffect(() => {
         let nominations = localStorage.getItem('nomination');
@@ -29,14 +30,42 @@ export default function App() {
     
     // Search Movies
     const handleSearchInputChange = e => {
+        e.preventDefault();
         setQuery(e.target.value);
-        setLoading(true);
-        setMessage('');
+        
     }
 
-    const fetchSearchResults = ( query ) => {
-        const searchUrl = `https://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`
-    }
+    // const fetchSearchResults = ( query ) => {
+    //     const searchUrl = `https://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`;
+
+    //     if (cancel) {
+    //         cancel.cancel();
+    //     } 
+
+    //     cancel = axios.CancelToken.source();
+
+    //     axios.get(searchUrl, {
+    //         cancelToken: cancel.token
+    //     })
+    //     .then(res => {
+    //         const resultNotFoundMsg = !res.Search.length ? 'There are no more search results.' : '';
+    //         setMovies(res.Search)
+    //         setMessage(resultNotFoundMsg)
+    //         setLoading(false)
+    //     })
+    //     .catch( error => {
+    //         if (axios.isCancel(error) || error) {
+    //             setLoading(false)
+    //             setMessage('Failed to fetch the data. Please check network')
+    //         }
+    //     })
+    // }
+
+    // if (query.length > 0) {
+    //     const movie = movie.filter((i) => {
+    //         return i.Title.match(query);
+    //     });
+    // }
 
 
     const handleSubmit = e => {
@@ -96,6 +125,7 @@ export default function App() {
                             addNomination={addNomination} 
                             nomination={nomination} 
                             error={error}
+                            query={query}
                         />
                     </Col>
                     <Col xs={6} sm={6} md={3} lg={3} xl={3}>      
