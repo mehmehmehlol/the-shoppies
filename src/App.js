@@ -5,6 +5,7 @@ import SearchContainer from './Search/SearchContainer';
 import NominationContainer from './Nomination/NominationContainer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 import {Container, Row, Col } from 'react-bootstrap';
 
 
@@ -15,7 +16,8 @@ export default function App() {
     const [movies, setMovies] = useState([]);
     const [nomination, setNomination] = useState([]);
     const [error, setError] = useState(null);
-
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('')
     
     // empty array/list to only fire the callback once
     useEffect(() => {
@@ -28,6 +30,12 @@ export default function App() {
     // Search Movies
     const handleSearchInputChange = e => {
         setQuery(e.target.value);
+        setLoading(true);
+        setMessage('');
+    }
+
+    const fetchSearchResults = ( query ) => {
+        const searchUrl = `https://www.omdbapi.com/?i=tt3896198&apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${query}`
     }
 
 
@@ -51,11 +59,11 @@ export default function App() {
     // Change in nomination list
     const addNomination = movie => {
         // debugger
-        if (nomination.length <= 5 && !nomination.includes(movie)) {
+        if (nomination.length < 5 && !nomination.includes(movie)) {
             setNomination([...nomination, movie])
             localStorage.setItem("nomination", JSON.stringify([...nomination, movie]))       
         } else {
-            // alert.show('You can only nominate five movies! Delete one of them and nominate again ;)')
+            alert('You can only nominate five movies! Delete one of them and nominate again ;)')
         }
     }
 
@@ -66,6 +74,10 @@ export default function App() {
         localStorage.setItem("nomination", JSON.stringify(newNomination))
     }
 
+    // handle error
+    // const handleError = () => {
+    //     error;
+    // }
 
     return (
         <div>
@@ -75,24 +87,21 @@ export default function App() {
                         <SearchMovies 
                             handleSearchInputChange={handleSearchInputChange}
                             handleSubmit={handleSubmit}
+                            query={query}
                         />
                         <br />
-                    
-                
-                    
                         <h2>Movies By Search:</h2>
                         <SearchContainer 
                             movies={movies} 
                             addNomination={addNomination} 
                             nomination={nomination} 
+                            error={error}
                         />
                     </Col>
-                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>
-                    
+                    <Col xs={6} sm={6} md={3} lg={3} xl={3}>      
                         <NominationContainer 
                             removeNomination={removeNomination}
                             nomination={nomination}
-                            // movies={movies}
                         />
                     </Col>
                 </Row>
