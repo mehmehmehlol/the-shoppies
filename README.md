@@ -13,6 +13,10 @@ A webpage for users to be able to browse for movies they would like to nominate.
 
 ## Screenshots
 
+### Main Page
+
 ![Search](images/search-page.png)
+
+### Alert When There Are More than 5 Nominations
 
 ![Alert](images/alert.gif)
