@@ -20,3 +20,10 @@ A webpage for users to be able to browse for movies they would like to nominate.
 ### Alert When There Are More than 5 Nominations
 
 ![Alert](images/alert.gif)
+
+## Things Would Like to Work On
+
+- Show errors
+- More complicated web designs
+- Live Search
+- Responsive design (for small screens in particular)
