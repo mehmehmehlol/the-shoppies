@@ -11,6 +11,10 @@
 }
 
 /* Header */
+.navbar {
+  width: 100%;
+}
+
 .navbar-brand {
   font-family: "Yusei Magic", sans-serif;
   font-size: 40px;
