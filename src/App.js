@@ -95,6 +95,7 @@ export default function App() {
                             addNomination={addNomination} 
                             nomination={nomination} 
                             error={error}
+                            query={query}
                         />
                     </div>
                     {/* <Col xs={6} sm={6} md={3} lg={3} xl={3}>      */}

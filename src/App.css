@@ -72,5 +72,11 @@ p.card-text {
   font-weight: 500;
 }
 
-
+@media only screen and (max-width: 600px) {
+  .navbar-brand {
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 10px;
+    text-align: center;
+  }
+}
 
