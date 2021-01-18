@@ -21,11 +21,12 @@ const MoviesDetails = ({ movie, nomination, addNomination }) => {
                             </p>
                             <>
                                 {
-                                    !nomination.includes(movie)
+                                    nomination.some(nominated => nominated.imdbID === imdbID)
                                     ? 
-                                    <Button className="nominate" variant="dark" onClick={() => addNomination(movie)} active>Nominate</Button>
-                                    : 
                                     <Button className="already-nominated" disabled>Already Nominated</Button>
+                                    :
+                                    <Button className="nominate" variant="dark" onClick={() => addNomination(movie)} active>Nominate</Button>
+                                    
                                 }
                             </>
                         </div>

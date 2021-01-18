@@ -49,8 +49,9 @@ export default function App() {
 
     // Change in nomination list
     const addNomination = movie => {
-        // debugger
-        if (nomination.length < 5 && !nomination.includes(movie)) {
+        debugger
+        if (nomination.length < 5 && !nomination.includes(movie.imdbID)) {
+            debugger
             setNomination([...nomination, movie])
             localStorage.setItem("nomination", JSON.stringify([...nomination, movie]))       
         } else {
@@ -59,7 +60,7 @@ export default function App() {
     }
 
     const removeNomination = movie => {
-        // debugger
+        debugger
         const newNomination = [...nomination].filter(nominated => nominated !== movie)
         setNomination(newNomination)
         localStorage.setItem("nomination", JSON.stringify(newNomination))
